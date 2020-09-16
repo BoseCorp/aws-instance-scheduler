@@ -54,14 +54,14 @@ export class AwsInstanceSchedulerStack extends cdk.Stack {
       description: 'Scheduled Services.',
       type: "String",
       allowedValues: ["EC2", "RDS", "Both"],
-      default: "EC2"
+      default: "Both"
     });
 
     const scheduleRdsClusters = new cdk.CfnParameter(this, 'ScheduleRdsClusters', {
       description: 'Enable scheduling of Aurora clusters for RDS Service.',
       type: "String",
       allowedValues: ["Yes", "No"],
-      default: "No"
+      default: "Yes"
     });
 
     const createRdsSnapshot = new cdk.CfnParameter(this, 'CreateRdsSnapshot', {
@@ -82,7 +82,7 @@ export class AwsInstanceSchedulerStack extends cdk.Stack {
       description: 'Collect instance scheduling data using CloudWatch metrics.',
       type: "String",
       allowedValues: ["Yes", "No"],
-      default: "No"
+      default: "Yes"
     });
 
     const logRetention = new cdk.CfnParameter(this, 'LogRetentionDays', {
@@ -96,21 +96,21 @@ export class AwsInstanceSchedulerStack extends cdk.Stack {
       description: 'Enable logging of detailed informtion in CloudWatch logs.',
       type: 'String',
       allowedValues: ["Yes", "No"],
-      default: "No"
+      default: "Yes"
     });
 
     const tagName = new cdk.CfnParameter(this, 'TagName', {
       description: 'Name of tag to use for associating instance schedule schemas with service instances.',
       type: 'String',
-      default: "Schedule",
+      default: "schedule",
       minLength: 1,
       maxLength: 127
     });
 
     const defaultTimezone = new cdk.CfnParameter(this, 'DefaultTimezone', {
-      description: 'Choose the default Time Zone. Default is \'UTC\'',
+      description: 'Choose the default Time Zone. Default is \'US/Eastern\'',
       type: 'String',
-      default: 'UTC',
+      default: 'US/Eastern',
       allowedValues: [
         "Africa/Abidjan",
         "Africa/Accra",
@@ -557,12 +557,14 @@ export class AwsInstanceSchedulerStack extends cdk.Stack {
 
     const startedTags = new cdk.CfnParameter(this, 'StartedTags', {
       type: 'String',
-      description: 'Comma separated list of tagname and values on the formt name=value,name=value,.. that are set on started instances'
+      description: 'Comma separated list of tagname and values on the formt name=value,name=value,.. that are set on started instances',
+      default: "state=running"
     })
 
     const stoppedTags = new cdk.CfnParameter(this, 'StoppedTags', {
       type: 'String',
-      description: 'Comma separated list of tagname and values on the formt name=value,name=value,.. that are set on stopped instances'
+      description: 'Comma separated list of tagname and values on the formt name=value,name=value,.. that are set on stopped instances',
+      default: "state=stopped"
     })
 
     const schedulerFrequency = new cdk.CfnParameter(this, 'SchedulerFrequency', {
