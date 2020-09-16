@@ -20,8 +20,8 @@ import { AwsInstanceSchedulerPipelineStack } from '../lib/aws-instance-scheduler
 const app = new App();
 
 new AwsInstanceSchedulerPipelineStack(app, 'AwsInstanceSchedulerPipelineStack', {
-  env: { account: '597737828455', region: 'us-east-1' },
-});
+    env: { account: '597737828455', region: 'us-east-1' },
+    });
 
 app.synth();
 // import { AwsInstanceSchedulerStack } from '../lib/aws-instance-scheduler-stack';
