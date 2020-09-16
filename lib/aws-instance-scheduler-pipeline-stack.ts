@@ -2,7 +2,7 @@ import * as codepipeline from '@aws-cdk/aws-codepipeline';
 import * as codepipeline_actions from '@aws-cdk/aws-codepipeline-actions';
 import { Construct, SecretValue, Stack, StackProps } from '@aws-cdk/core';
 import { CdkPipeline, SimpleSynthAction } from "@aws-cdk/pipelines";
-import { CdkpipelinesAwsInstanceSchedulerStage } from "./aws-instance-scheduler-stage";
+// import { CdkpipelinesAwsInstanceSchedulerStage } from "./aws-instance-scheduler-stage";
 // import { ManualApprovalAction } from '@aws-cdk/aws-codepipeline-actions';
 
 /**
@@ -15,7 +15,8 @@ export class AwsInstanceSchedulerPipelineStack extends Stack {
     const sourceArtifact = new codepipeline.Artifact();
     const cloudAssemblyArtifact = new codepipeline.Artifact();
  
-    const pipeline = new CdkPipeline(this, 'AwsInstanceSchedulerPipeline', {
+    // const pipeline = 
+    new CdkPipeline(this, 'AwsInstanceSchedulerPipeline', {
       // The pipeline name
       pipelineName: 'AwsInstanceSchedulerPipeline',
       cloudAssemblyArtifact,
@@ -41,9 +42,13 @@ export class AwsInstanceSchedulerPipelineStack extends Stack {
     });
 
     // This is where we add the application stages
-    pipeline.addApplicationStage(new CdkpipelinesAwsInstanceSchedulerStage(this, 'CCoE-Tools', {
-      env: { account: '543232713813', region: 'us-east-1' }
-    }));
+    // pipeline.addApplicationStage(new CdkpipelinesAwsInstanceSchedulerStage(this, 'GD-Sandbox', {
+    //   env: { account: '597737828455', region: 'us-east-1' }
+    // }));
+    
+    // pipeline.addApplicationStage(new CdkpipelinesAwsInstanceSchedulerStage(this, 'CCoE-Tools', {
+    //   env: { account: '543232713813', region: 'us-east-1' }
+    // }));
     
     // pipeline.addApplicationStage(new CdkpipelinesSSMRegStage(this, 'Shared-Services', {
     //   env: { account: '164705996232', region: 'us-east-1' }
