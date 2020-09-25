@@ -10,10 +10,10 @@ export class CdkpipelinesAwsInstanceSchedulerStage extends Stage {
     super(scope, id, props);
     
     const SOLUTION_VERSION = process.env['DIST_VERSION'] || 'bose1';
-    const SOLUTION_NAME = process.env['SOLUTION_NAME'];
-    const SOLUTION_ID = process.env['SOLUTION_ID'];
+    const SOLUTION_NAME = 'aws_instance_scheduler';
+    const SOLUTION_ID = 'v1';
     const SOLUTION_BUCKET = 'ccoe-sched-pipeline';
-    const SOLUTION_TMN = process.env['SOLUTION_TRADEMARKEDNAME'];
+    const SOLUTION_TMN = 'AWS Solution Development';
     const SOLUTION_PROVIDER = 'AWS Solution Development';
 
     new AwsInstanceSchedulerStack(this, 'AwsInstanceScheduler', {
