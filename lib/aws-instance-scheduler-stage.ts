@@ -9,10 +9,10 @@ export class CdkpipelinesAwsInstanceSchedulerStage extends Stage {
   constructor(scope: Construct, id: string, props?: StageProps) {
     super(scope, id, props);
     
-    const SOLUTION_VERSION = process.env['DIST_VERSION'] || '%%VERSION%%';
+    const SOLUTION_VERSION = process.env['DIST_VERSION'] || 'bose1';
     const SOLUTION_NAME = process.env['SOLUTION_NAME'];
     const SOLUTION_ID = process.env['SOLUTION_ID'];
-    const SOLUTION_BUCKET = process.env['DIST_OUTPUT_BUCKET'];
+    const SOLUTION_BUCKET = 'ccoe-sched-pipeline';
     const SOLUTION_TMN = process.env['SOLUTION_TRADEMARKEDNAME'];
     const SOLUTION_PROVIDER = 'AWS Solution Development';
 
